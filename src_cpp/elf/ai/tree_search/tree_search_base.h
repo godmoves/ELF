@@ -116,7 +116,9 @@ struct EdgeInfo {
         virtual_loss(0) {}
 
   float getQSA() const {
-    return reward / num_visits;
+    float qsa = reward / num_visits;
+    float winrate = (1.0 + qsa) / 2.0;
+    return winrate;
   }
 
   // TODO: What is this function doing (ssengupta@fb.com)
@@ -161,7 +163,7 @@ struct EdgeInfo {
     std::stringstream ss;
 
     if (verbose == false) {
-      ss << reward << "/" << num_visits << " (" << getQSA()
+      ss << reward << "/" << num_visits << " (black winrate= " << getQSA()
          << "), Pr: " << prior_probability << ", child node: " << child_node;
     } else {
       ss << "[" << reward << "/" << num_visits << "]["

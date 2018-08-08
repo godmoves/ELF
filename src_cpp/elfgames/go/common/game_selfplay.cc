@@ -394,11 +394,11 @@ void GoGameSelfPlay::act() {
   c = mcts_update_info(curr_ai, c);
 
   if (show_board) {
-    logger_->info(
-        "Current board:\n{}\n[{}] Propose move {}\n",
-        s.showBoard(),
-        s.getPly(),
-        elf::ai::tree_search::ActionTrait<Coord>::to_string(c));
+    // logger_->info(
+    //     "Current board:\n{}\n[{}] Propose move {}\n",
+    //     s.showBoard(),
+    //     s.getPly(),
+    //     elf::ai::tree_search::ActionTrait<Coord>::to_string(c));
   }
 
   const bool shouldResign = _state_ext.shouldResign(&_rng);
