@@ -5,6 +5,7 @@
 # LICENSE file in the root directory of this source tree.
 
 import inspect
+import sys
 import traceback
 from collections import Counter
 
@@ -308,7 +309,7 @@ class GoConsoleGTP:
         return xy2move(x, y)
 
     def showboard(self, batch):
-        print(batch.GC.getGame(0).showBoard())
+        print(batch.GC.getGame(0).showBoard(), sys.stderr)
 
     def get_next_player(self, batch):
         return batch.GC.getGame(0).getNextPlayer()
@@ -333,7 +334,7 @@ class GoConsoleGTP:
             return True, None
 
     def print_msg(self, ret, msg):
-        print("\n%s %s\n\n" % (("=" if ret else "?"), msg))
+        print("%s %s\n\n" % (("=" if ret else "?"), msg))
 
     def prompt(self, prompt_str, batch):
         # Show last command results.
@@ -368,5 +369,5 @@ class GoConsoleGTP:
                         self.print_msg(True, "")
 
             except Exception:
-                print(traceback.format_exc())
+                print(traceback.format_exc(), sys.stderr)
                 self.print_msg(False, "Invalid command")
