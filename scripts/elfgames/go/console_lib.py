@@ -309,7 +309,7 @@ class GoConsoleGTP:
         return xy2move(x, y)
 
     def showboard(self, batch):
-        print(batch.GC.getGame(0).showBoard(), sys.stderr)
+        print(batch.GC.getGame(0).showBoard(), file=sys.stderr)
 
     def get_next_player(self, batch):
         return batch.GC.getGame(0).getNextPlayer()
@@ -369,5 +369,5 @@ class GoConsoleGTP:
                         self.print_msg(True, "")
 
             except Exception:
-                print(traceback.format_exc(), sys.stderr)
+                print(traceback.format_exc(), file=sys.stderr)
                 self.print_msg(False, "Invalid command")

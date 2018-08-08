@@ -7,6 +7,7 @@
 import importlib
 import pprint
 import random
+import sys
 import time
 import torch
 import warnings
@@ -25,7 +26,7 @@ _logger_factory = logging.IndexedLoggerFactory(
 def load_module(mod):
     """Load a python module."""
     module = importlib.import_module(mod)
-    print(module, mod, sys.stderr)
+    print(module, mod, file=sys.stderr)
     return module
 
 
